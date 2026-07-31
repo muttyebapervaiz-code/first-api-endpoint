@@ -29,7 +29,7 @@ cd first-api-endpoint
 
 # 2. Create and activate a virtual environment
 python -m venv venv
-venv\\Scripts\\activate      # Windows
+venv\\\\Scripts\\\\activate      # Windows
 # source venv/bin/activate # macOS/Linux
 
 # 3. Install dependencies
@@ -46,10 +46,10 @@ Once running, open **http://127.0.0.1:8000/docs** to try out all endpoints via t
 |Method|Endpoint|Description|
 |-|-|-|
 |GET|`/tasks`|List all tasks|
-|GET|`/tasks/{task\_id}`|Get a single task by id|
+|GET|`/tasks/{task\\\_id}`|Get a single task by id|
 |POST|`/tasks`|Create a new task|
-|PUT|`/tasks/{task\_id}`|Update an existing task|
-|DELETE|`/tasks/{task\_id}`|Delete a task|
+|PUT|`/tasks/{task\\\_id}`|Update an existing task|
+|DELETE|`/tasks/{task\\\_id}`|Delete a task|
 
 All endpoints use **parameterized SQL queries** (`?` placeholders) — user input is never glued directly into a SQL string, which protects against SQL injection.
 
@@ -65,7 +65,7 @@ UPDATE tasks SET done = 1;
 
 **What it returned:** This query had no `WHERE` clause, so it updated **every single row** in the table, marking all tasks as done — not just one. This was a deliberate exercise, and it taught me how dangerous it is to forget a `WHERE` clause in an `UPDATE` or `DELETE` statement, since it's easy to accidentally overwrite or delete an entire table.
 
-*(Screenshot of DB Browser for SQLite showing the `tasks` table — add screenshot here, e.g. `!\[DB Browser screenshot](screenshots/db-browser.png)`)*
+*(Screenshot of DB Browser for SQLite showing the `tasks` table — add screenshot here, e.g. `!\\\[DB Browser screenshot](screenshots/db-browser.png)`)*
 
 ## Project structure
 
@@ -94,4 +94,42 @@ first-api-endpoint/
 Start database:
 
 docker run --name taskdb -e POSTGRES\_PASSWORD=dev -e POSTGRES\_DB=tasks -p 5432:5432 -v taskdata:/var/lib/postgresql/data -d postgres:16
+
+
+
+
+
+**## How to Run**
+
+
+
+1\. Copy environment file:
+
+&#x20;  cp .env.example .env
+
+
+
+2\. Start everything with one command:
+
+&#x20;  docker compose up
+
+
+
+**## Endpoints**
+
+
+
+| Method | URL | Description |
+
+|--------|-----|-------------|
+
+| GET | /tasks | Get all tasks |
+
+| GET | /tasks/{id} | Get one task |
+
+| POST | /tasks | Create task |
+
+| PUT | /tasks/{id} | Update task |
+
+| DELETE | /tasks/{id} | Delete task |
 
