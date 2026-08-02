@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import db
-
+import auth
 app = FastAPI()
-
+app.include_router(auth.router)
 class Task(BaseModel):
     title: str
     done: bool = False
